@@ -28,7 +28,11 @@ public class ConwaysGameOfLife extends JFrame implements ActionListener {
         JFrame game = new ConwaysGameOfLife();
         game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         game.setTitle("Conway's Game of Life");
-        game.setIconImage(new ImageIcon(ConwaysGameOfLife.class.getResource("logo.png")).getImage());
+        try {
+            game.setIconImage(new ImageIcon(ConwaysGameOfLife.class.getResource("logo.png")).getImage());
+        } catch (NullPointerException e) {
+            System.out.println("Warning: failed to find icon");
+        }
         game.setSize(DEFAULT_WINDOW_SIZE);
         game.setMinimumSize(MINIMUM_WINDOW_SIZE);
         game.setLocation((Toolkit.getDefaultToolkit().getScreenSize().width - game.getWidth()) / 2,
